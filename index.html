@@ -15,22 +15,125 @@
 	<!-- Support for simple cookieless analytics -->
 <script data-host="https://cuttr.co.uk" data-dnt="true" src="https://cuttr.co.uk/js/script.js" id="ZwSg9rf6GA" async defer></script>
 
-		<link rel="stylesheet" href="main.css">
+<link rel="stylesheet" href="styles/main.css">
+<link rel="stylesheet" href="styles/loader.scss">
 </head>
 
 <body>
-  <div class="container">
 
-    <div class="center">
-      <img src="waiq-tm.png" alt="" />
-    </div>
 
-    <div class="footer dark">
-      <span>© 2023 | <a class="dark" href="mailto:hello@waiq.technology">hello@waiq.technology</a></span>
-    </div>
+	<main>
+	  <div class="-content -index">
 
-  </div>
+		  <div class="container">
+
+		    <div class="center">
+		      <img class="img-top" src="waiq-tm.png" alt="" />
+		    </div>
+
+				<div>
+				  <div class="countdown">
+				  </div>
+				  <div class="countdown__message">
+				    days until 2024 <strong>WAIQ</strong> conferences at Harvard Law School
+				  </div>
+					<div class="countdown__message">
+				    See you next 10, 11, 12 and 13 June at the Hall
+				  </div>
+					<div class="countdown__message">
+				    <a href="#" class="js-trigger-transition">Click here to review the brochure</a>
+				  </div>
+				</div>
+
+		    <div class="footer dark">
+		      <span>© 2023 | <a class="dark" href="mailto:hello@waiq.technology">hello@waiq.technology</a></span>
+		    </div>
+
+		  </div>
+
+		</div>
+
+		<div class="-content -modal -index" style="display:none">
+			<iframe src="http://flowpaper.com/flipbook/https://waiq.technology/WAIQ-Harvard-2024.pdf" width="100%" height="90%" style="border: none;" allowFullScreen>
+			</iframe>      <a href="#" class="js-trigger-transition">Close</a>
+		  </div>
+		</main>
+
+
+	<div class="loader">
+	  <div class="bar1"></div>
+	  <div class="bar2"></div>
+	  <div class="bar3"></div>
+	  <div class="bar4"></div>
+	  <div class="bar5"></div>
+	  <div class="bar6"></div>
+	</div>
 
 </body>
+
+<script>
+const countDown = (function(){
+
+  // function to return difference in days between now and the date passed
+  const daysLeft = function(toDate) {
+    dt1 = new Date();
+    dt2 = new Date(toDate);
+    return Math.floor((Date.UTC(dt2.getFullYear(), dt2.getMonth(), dt2.getDate()) - Date.UTC(dt1.getFullYear(), dt1.getMonth(), dt1.getDate()) ) /(1000 * 60 * 60 * 24));
+  }
+
+  // create the html for the countdown digits
+  const createDigits = function(toDate) {
+
+    let countHTML = "";
+    const daysLeftInt = daysLeft(toDate);
+    const digitsArr = (daysLeftInt + '').split('');
+
+    digitsArr.forEach(function (digit, index) {
+      countHTML += `<div class="countdown__digit">${digit}</div>`;
+    });
+
+    // inject the html
+    const countdownEl = document.querySelector('.countdown');
+    countdownEl.innerHTML = countHTML;
+  }
+
+
+	return {
+		init: function(date) {
+      // put something here
+      createDigits(date);
+		}
+	}
+
+})();
+
+// enter the date you're counting down to mm/dd/yyyy
+countDown.init('06/10/2024');
+
+// transition for loading brochure
+
+$('.js-trigger-transition').on('click', function(e) {
+  e.preventDefault();
+  transition();
+});
+
+function toggledivs() {
+  $('.-content').toggle();
+}
+
+function transition() {
+  var tl = new TimelineMax();
+
+  tl.to(CSSRulePlugin.getRule('body:before'), 0.2, {cssRule: {top: '50%' }, ease: Power2.easeOut}, 'close')
+  .to(CSSRulePlugin.getRule('body:after'), 0.2, {cssRule: {bottom: '50%' }, ease: Power2.easeOut}, 'close')
+  .to($('.loader'), 0.2, {opacity: 1})
+  .to(CSSRulePlugin.getRule('body:before'), 0.2, {cssRule: {top: '0%' }, ease: Power2.easeOut}, '+=1.5', 'open')
+  .to(CSSRulePlugin.getRule('body:after'), 0.2, {cssRule: {bottom: '0%' }, ease: Power2.easeOut}, '-=0.2', 'open')
+  .to($('.loader'), 0.2, {opacity: 0}, '-=0.2')
+  .to(setTimeout(toggledivs, 1000));
+}
+
+
+</script>
 
 </html>
