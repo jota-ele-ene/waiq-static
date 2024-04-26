@@ -90,49 +90,6 @@ img {
 
 }
 
-.countdown {
-  margin-top: 25%;
-  text-align: center;
-}
-@media only screen and (max-width : 900px) {
-  margin-top: 20%;
-}
-
-.countdown__message {
-  color: #021547;
-  font-family: 'Roboto', sans-serif;
-  font-size: 25px;
-  font-weight: 100;
-  padding-top: 1em;
-  text-align: center;
-}
-
-.countdown__digit {
-  background: #FFFFFF;
-  border-radius: 0.25em;
-  color: #021547;
-  display: inline-block;
-  font-family: 'Roboto', sans-serif;
-  font-size: 100px;
-  font-weight: 900;
-  margin: 0 0.05em;
-  padding: 0.2em 0;
-  position: relative;
-  text-align: center;
-  width: 1.2em;
-
-}
-
-.countdown__list {
-  margin: 0;
-  padding: 0;
-}
-
-.countdown__list-item {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
 
 .content {
   text-align: center;
