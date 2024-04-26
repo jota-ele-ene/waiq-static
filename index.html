@@ -13,17 +13,21 @@
 		<meta name="theme-color" content="#ffffff">
 
 	<!-- Support for simple cookieless analytics -->
-<script data-host="https://cuttr.co.uk" data-dnt="true" src="https://cuttr.co.uk/js/script.js" id="ZwSg9rf6GA" async defer></script>
-
+<!--<script data-host="https://cuttr.co.uk" data-dnt="true" src="https://cuttr.co.uk/js/script.js" id="ZwSg9rf6GA" async defer></script>-->
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js" integrity="sha512-DkPsH9LzNzZaZjCszwKrooKwgjArJDiEjA5tTgr3YX4E6TYv93ICS8T41yFHJnnSmGpnf0Mvb5NhScYbwvhn2w==" crossorigin="anonymous"></script>
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TimelineMax.min.js" integrity="sha512-0xrMWUXzEAc+VY7k48pWd5YT6ig03p4KARKxs4Bqxb9atrcn2fV41fWs+YXTKb8lD2sbPAmZMjKENiyzM/Gagw==" crossorigin="anonymous"></script>
+	    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/gsap-latest-beta.min.js" crossorigin="anonymous"></script>
+	    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/CSSRulePlugin3.min.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="styles/main.css">
-<link rel="stylesheet" href="styles/loader.scss">
+<link rel="stylesheet" href="styles/lollipop.css">
 </head>
 
 <body>
 
-
-	<main>
-	  <div class="-content -index">
 
 		  <div class="container">
 
@@ -41,33 +45,24 @@
 				    See you next 10, 11, 12 and 13 June at the Hall
 				  </div>
 					<div class="countdown__message">
-				    <a href="#" class="js-trigger-transition">Click here to review the brochure</a>
+				    <a href="#" class="btn js-trigger-transition">Click here to review the brochure</a>
 				  </div>
 				</div>
 
 		    <div class="footer dark">
-		      <span>© 2024 | <a class="dark" href="mailto:hello@waiq.technology">hello@waiq.technology</a></span>
+		      <span>© 2023 | <a class="dark" href="mailto:hello@waiq.technology">hello@waiq.technology</a></span>
 		    </div>
 
 		  </div>
 
-		</div>
 
-		<div class="-content -modal -index" style="display:none">
-			<iframe src="http://flowpaper.com/flipbook/https://waiq.technology/WAIQ-Harvard-2024.pdf" width="100%" height="90%" style="border: none;" allowFullScreen>
-			</iframe>      <a href="#" class="js-trigger-transition">Close</a>
+		<div class='wrap'>
+		  <div class='content'>
+		<iframe src="http://flowpaper.com/flipbook/https://waiq.technology/WAIQ-Harvard-2024.pdf" width="100%" height="90%" style="border: none;" allowFullScreen>
+		</iframe>
+		<a href="#" class="btn close">Close</a>
 		  </div>
-		</main>
-
-
-	<div class="loader">
-	  <div class="bar1"></div>
-	  <div class="bar2"></div>
-	  <div class="bar3"></div>
-	  <div class="bar4"></div>
-	  <div class="bar5"></div>
-	  <div class="bar6"></div>
-	</div>
+		</div>
 
 </body>
 
@@ -112,27 +107,11 @@ countDown.init('06/10/2024');
 
 // transition for loading brochure
 
-$('.js-trigger-transition').on('click', function(e) {
-  e.preventDefault();
-  transition();
+$(".btn").on("click", function () {
+  $(".wrap, a").toggleClass("active");
+
+  return false;
 });
-
-function toggledivs() {
-  $('.-content').toggle();
-}
-
-function transition() {
-  var tl = new TimelineMax();
-
-  tl.to(CSSRulePlugin.getRule('body:before'), 0.2, {cssRule: {top: '50%' }, ease: Power2.easeOut}, 'close')
-  .to(CSSRulePlugin.getRule('body:after'), 0.2, {cssRule: {bottom: '50%' }, ease: Power2.easeOut}, 'close')
-  .to($('.loader'), 0.2, {opacity: 1})
-  .to(CSSRulePlugin.getRule('body:before'), 0.2, {cssRule: {top: '0%' }, ease: Power2.easeOut}, '+=1.5', 'open')
-  .to(CSSRulePlugin.getRule('body:after'), 0.2, {cssRule: {bottom: '0%' }, ease: Power2.easeOut}, '-=0.2', 'open')
-  .to($('.loader'), 0.2, {opacity: 0}, '-=0.2')
-  .to(setTimeout(toggledivs, 1000));
-}
-
 
 </script>
 
