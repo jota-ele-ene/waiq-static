@@ -5,7 +5,7 @@
 }
 @media all and (max-width : 900px) {
 .countdown__digit {
-font-size: 4em;
+font-size: 4em!important;}
 }
 
 .countdown__message {
