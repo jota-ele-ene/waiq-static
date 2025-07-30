@@ -1,6 +1,7 @@
 .countdown {
-  margin-top: 20%;
-  text-align: center;
+    margin: 10% 10% 0;
+    text-align: center;
+    width: 80%;
 }
 @media all and (max-width : 900px) {
 .countdown {
