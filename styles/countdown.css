@@ -4,9 +4,8 @@
     width: 80%;
 }
 @media all and (max-width : 900px) {
-.countdown {
-  margin-top: 40%;
-}
+.countdown__digit {
+font-size: 4em;
 }
 
 .countdown__message {
